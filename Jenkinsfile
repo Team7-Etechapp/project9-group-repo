@@ -15,7 +15,7 @@ pipeline {
                 }
                 stage('build') {
                     steps {
-                        echo 'Building to be initiated'
+                        sh 'ls -lh
                     }
                 }
             }
@@ -23,7 +23,7 @@ pipeline {
         stage('security-check') {
             steps {
                 sh 'bash -x /var/lib/jenkins/workspace/etechapp-project-pipelinejob/jenkinsstatus.sh'
-                echo "Jenkins status check completed"
+                sh 'pwd'
             }
         }
         stage('parallel-job-2') {
