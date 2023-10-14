@@ -15,7 +15,7 @@ pipeline {
                 }
                 stage('build') {
                     steps {
-                        sh 'ls -lh
+                        sh 'ls -lh'
                     }
                 }
             }
