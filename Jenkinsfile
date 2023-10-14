@@ -11,26 +11,27 @@ pipeline {
                 stage('system-statisctics') {
                     steps {
                         sh 'bash -x /var/lib/jenkins/workspace/etechapp-project-pipelinejob/systemstatus.sh'
+                        echo "System status check completed"
                     }
                 }
                 stage('build') {
                     steps {
-                        sh 'ls -lh'
+                        echo 'Building to be initiated'
                     }
                 }
             }
         }
-        stage('security-check') {
+        stage('test') {
             steps {
-                sh 'bash -x /var/lib/jenkins/workspace/etechapp-project-pipelinejob/jenkinsstatus.sh'
-                sh 'pwd'
+                echo 'Testing to be initiated'
             }
         }
         stage('parallel-job-2') {
             parallel {
-                stage('test') {
+                stage('security-check') {
                     steps {
-                        echo 'Testing to be initiated'
+                        sh 'bash -x /var/lib/jenkins/workspace/etechapp-project-pipelinejob/jenkinsstatus.sh'
+                        echo "Jenkins status check completed"
                     }
                 }
                 stage('deploy') {
@@ -48,11 +49,6 @@ pipeline {
         stage('publish') {
             steps {
                 echo 'Publishing to be initiated'
-            }
-        }
-        stage('Test'){
-            steps{
-                echo "Testing"
             }
         }
     }
